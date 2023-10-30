@@ -1,1 +1,4 @@
-# brainager_gwas_ukb_2023
+## GWAS of brain age in UKB 
+### Analysts
+-  Data preparation: Toni Clarke
+-  Analysis and data sharing: X Shen
