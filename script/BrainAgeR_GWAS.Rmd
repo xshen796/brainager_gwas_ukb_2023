@@ -37,7 +37,7 @@ knitr::opts_chunk$set(engine.opts = list(bash = "-l"))
 
 Set up directories and copy data to scratch space
 
-```{bash copy data from datastore (on a staging node), eval=F}
+```{bash copy data from datastore (on a staging node), eval=F,warning=F,error=F,message=F}
 mkdir $myscratch/ukb_brainager
 ln -s $myscratch/ukb_brainager data/ukb_brainager
 
@@ -54,7 +54,7 @@ cp /exports/igmm/eddie/GenScotDepression/data/ukb/genetics/gwas/BOLT/whitebritis
 
 Check phenotype file and remove non-white-British subjects
 
-```{r}
+```{r, eval=F,warning=F,error=F,message=F}
 # phenotype
 brainPAD = fread(here::here('data/JC_BRAIN_AGE/brain_age_pheno.file'))
 # white british IDs
@@ -84,7 +84,7 @@ brainPAD %>%
 
 Covariates
 
-```{r load covariates for gwas}
+```{r load covariates for gwas, eval=F,warning=F,error=F,message=F}
 # Load ukb covariates from phenotype files
 con_duck <- dbConnect(duckdb::duckdb(), here::here("/exports/igmm/eddie/GenScotDepression/data/ukb/phenotypes/fields/2022-11-phenotypes-ukb670429-v0.7.1/ukb670429.duckdb"),read_only=T)
 baseline = tbl(con_duck,'BaselineCharacteristics') %>% 
@@ -122,7 +122,7 @@ dbDisconnect(con_duck, shutdown=TRUE)
 
 Software: regenie
 
-```{bash}
+```{bash, eval=F,warning=F,error=F,message=F}
 cd /exports/igmm/eddie/GenScotDepression/shen/ActiveProject/Collab/brainager_gwas_ukb_2023
 
 qsub script/job.regenie_step1_gwas.sh
